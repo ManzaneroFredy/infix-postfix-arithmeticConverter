@@ -35,18 +35,16 @@ public class Archivo {
         }
     }
 
-    public void generarArchivoSalida(GenericStack<Character> pila) throws IOException {
-        String direccionSalida = "OperacionesPosfijas/src/Docs/salida.txt";
+    public void generarArchivoSalida(ArrayList<String> listaExpresiones) throws IOException {
+        String direccionSalida = "OperacionesPosfijas/src/Docs/exp_postfijas.txt";
         FileOutputStream archivoTxt = new FileOutputStream(direccionSalida);
         OutputStreamWriter salida = new OutputStreamWriter(archivoTxt, "UTF-8");
 
-        for (int i = 0; i < pila.size(); i++) {
-            if (i != pila.size() - 1) {
-                salida.write(pila.peekSpecificElement(i) + "\n");
-            } else {
-                salida.write(pila.peekSpecificElement(i));
-            }
-        }
+        for(String expresion : listaExpresiones){
+            salida.write("Expr:"+expresion+ "; Eval:"+"\n");
+        } 
+
+
         salida.close();
     }
 

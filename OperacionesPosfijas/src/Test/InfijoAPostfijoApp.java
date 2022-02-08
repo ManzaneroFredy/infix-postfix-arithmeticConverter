@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import Model.AnalizadorPostfijo;
 import Model.Archivo;
 
-public class App {
+public class InfijoAPostfijoApp {
     public static void main(String[] args) throws Exception {
         Archivo archivo = new Archivo();
         ArrayList<String> listaExpresiones = new ArrayList<>();

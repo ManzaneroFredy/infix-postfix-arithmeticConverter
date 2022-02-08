@@ -1,0 +1,5 @@
+Expr:24+7*395-*+; Eval:
+Expr:25+; Eval:
+Expr:234+*; Eval:
+Expr:59+2*65*+; Eval:
+Expr:443*+; Eval:

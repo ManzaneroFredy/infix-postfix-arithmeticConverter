@@ -1,30 +1,25 @@
 package Test;
 
 import java.util.ArrayList;
-import java.util.Stack;
 
-import Model.AnalizadorPosfijo;
+import Model.AnalizadorPostfijo;
 import Model.Archivo;
-import Model.GenericStack;
 
 public class App {
     public static void main(String[] args) throws Exception {
         Archivo archivo = new Archivo();
-        ArrayList<String> lineasArchivo = new ArrayList<>();
-        AnalizadorPosfijo analizador = new AnalizadorPosfijo();
-        Stack<Integer> pila = new Stack<>();
-        
-        GenericStack<Integer> pilaPrueba = new GenericStack<>();
-
-        pilaPrueba.push(10);
-        pilaPrueba.push(10);
-        pilaPrueba.push(10);
-        pilaPrueba.push(10);
-        pilaPrueba.remove(0);
+        ArrayList<String> listaExpresiones = new ArrayList<>();
+        AnalizadorPostfijo analizador = new AnalizadorPostfijo();
 
 
-        archivo.obtenerExpresiones(lineasArchivo);
-        analizador.obtenerExpresion(lineasArchivo);
+        archivo.obtenerExpresiones(listaExpresiones);
+
+        // System.out.println("=======EXPRESIONES CARGADAS=======");
+        // for(String linea : listaExpresiones){
+        //     System.out.println(linea);
+        // }
+        // System.out.println("");
+        analizador.convertirExpresion(listaExpresiones);
 
 
         

@@ -1,9 +1,6 @@
 package Model;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import javax.sound.sampled.SourceDataLine;
 
 public class GenericStack<T> {
     private int maxSize;
@@ -37,9 +34,15 @@ public class GenericStack<T> {
         return stackArray.get(top -1); 
     }
 
-    public void recorrerElementos(){
+    public void printStackDebug(){
         for (T t : stackArray) {
-            System.out.println(t);
+            System.out.print(t + "     ");
+        }
+    }
+
+    public void printStack(){
+        for (T t : stackArray) {
+            System.out.print(t);
         }
     }
 
@@ -50,11 +53,10 @@ public class GenericStack<T> {
     public T remove(int index) throws Exception{
         if(isEmpty()){
             throw new Exception("No hay elementos en el stack");
-        }else if(index ){
-            
+        }else if(index > stackArray.size()){
+            throw new Exception("No existe algún elemento en ese indice");
         }
         return stackArray.remove(index);
-       
     }
 
     private boolean isEmpty() {
@@ -64,6 +66,12 @@ public class GenericStack<T> {
     public int size(){
         return stackArray.size();
     }
+
+    public void clearStack(){
+        stackArray.clear();
+    }
+
+
 
 }
 

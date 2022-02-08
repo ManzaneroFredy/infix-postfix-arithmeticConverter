@@ -8,20 +8,24 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 public class Archivo {
-    private static final String RUTA_ARCHIVO = "src/Docs/exp_infijas.txt";
+    private static final String RUTA_ARCHIVO = "OperacionesPosfijas/src/Docs/exp_infijas.txt";
     private BufferedReader lectorDocumento = null;
 
-    public void obtenerExpresiones(ArrayList<String> lineasArchivo) throws IOException {
+    public void obtenerExpresiones(ArrayList<String> listaExpresiones) throws IOException {
         try {
+
             lectorDocumento = new BufferedReader(new FileReader(RUTA_ARCHIVO));
             String linea = lectorDocumento.readLine();
             while (linea != null) {
-                lineasArchivo.add(linea);
+                String[] values = linea.split(";");
+                for (int i = 0; i < values.length; i++) {
+                    listaExpresiones.add(values[i]);
+                }
                 linea = lectorDocumento.readLine();
             }
 
         } catch (Exception ex) {
-            System.out.println("problema detectado " + ex);
+            System.out.println("Problema detectado " + ex);
 
         } finally {
             if (null != lectorDocumento) {
@@ -31,15 +35,15 @@ public class Archivo {
         }
     }
 
-    public void generarArchivoSalida(GenericStack<Character> pila) throws IOException{
-        String direccionSalida = "src/Docs/salida.txt";
+    public void generarArchivoSalida(GenericStack<Character> pila) throws IOException {
+        String direccionSalida = "OperacionesPosfijas/src/Docs/salida.txt";
         FileOutputStream archivoTxt = new FileOutputStream(direccionSalida);
         OutputStreamWriter salida = new OutputStreamWriter(archivoTxt, "UTF-8");
 
-        for(int i =0 ; i <  pila.size(); i++){
-            if(i != pila.size() - 1){
+        for (int i = 0; i < pila.size(); i++) {
+            if (i != pila.size() - 1) {
                 salida.write(pila.peekSpecificElement(i) + "\n");
-            }else{
+            } else {
                 salida.write(pila.peekSpecificElement(i));
             }
         }

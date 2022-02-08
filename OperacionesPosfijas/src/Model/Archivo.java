@@ -36,11 +36,11 @@ public class Archivo {
         FileOutputStream archivoTxt = new FileOutputStream(direccionSalida);
         OutputStreamWriter salida = new OutputStreamWriter(archivoTxt, "UTF-8");
 
-        for(int i =0 ; i <  pila.size(); i++){
-            if(i != pila.size() - 1){
-                salida.write(pila.peekSpecificElement(i) + "\n");
-            }else{
+        for(int i = 0 ; i <  pila.size(); i++){
+            if(i !=(pila.size() - 1)){
                 salida.write(pila.peekSpecificElement(i));
+            }else{
+                salida.write(pila.peekSpecificElement(i) + "\n");
             }
         }
         salida.close();

@@ -50,11 +50,16 @@ public class GenericStack<T> {
     public T remove(int index) throws Exception{
         if(isEmpty()){
             throw new Exception("No hay elementos en el stack");
-        }else if(index ){
-            
+        }else if(index > stackArray.size()){
+            throw new Exception("No existe algún elemento en ese indice");
         }
         return stackArray.remove(index);
-       
+    }
+
+    public void vaciarPila(){
+        for(int i = 0; i < stackArray.size(); i++){
+            stackArray.remove(0);
+        }
     }
 
     private boolean isEmpty() {

@@ -6,6 +6,8 @@ public class AnalizadorPosfijo {
     private GenericStack<Character> salida = new GenericStack<>();
     private GenericStack<Character> operadores = new GenericStack<>();
     private Archivo archivoSalida = new Archivo();
+    private boolean operadoresFirstKey;
+    private boolean operadoresSecondKey;
     
     public void obtenerExpresion(ArrayList<String> lineasArchivo) throws Exception{
        for (String string : lineasArchivo) {
@@ -21,7 +23,14 @@ public class AnalizadorPosfijo {
 
     private void esOperador(Character caracter){
         switch (caracter) {
-            case '+': operadores.push(caracter);
+            case '+':{
+                operadores.push(caracter);
+                /*
+                if(estaEnlaMismaJerarquia(caracter, operadoresSecondKey)){
+
+                }
+                */
+            }
             break;
             case '-': operadores.push(caracter);
             break;
@@ -40,18 +49,23 @@ public class AnalizadorPosfijo {
             break;
         }
     }
-
-    private void estaEnlaMismaJerarquia(Character caracter){
-        
+    /*
+    private boolean estaEnlaMismaJerarquia(Character caracter, boolean esLaMismaJerarquia){
+        if((caracter == '+') || (caracter == '-') && (!operadoresSecondKey)){
+            
+        }
     }
+    */
 
     private void eliminarParentesis(){
         try{
             int i;
             int contador = 0;
             for(i = operadores.size() - 2; i >= 0; i--){
-                if(operadores.peekSpecificElement(i) == '('){
+                if(operadores.peekSpecificElement(i) != '('){
                     contador++;
+                }else{
+                    break;
                 }
             }
 

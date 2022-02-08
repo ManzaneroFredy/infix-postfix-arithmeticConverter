@@ -47,6 +47,16 @@ public class GenericStack<T> {
         return stackArray.get(elementIndex);
     }
 
+    public T remove(int index) throws Exception{
+        if(isEmpty()){
+            throw new Exception("No hay elementos en el stack");
+        }else if(index ){
+            
+        }
+        return stackArray.remove(index);
+       
+    }
+
     private boolean isEmpty() {
         return (top == 0); 
     }

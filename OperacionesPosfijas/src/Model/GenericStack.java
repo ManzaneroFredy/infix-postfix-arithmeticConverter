@@ -3,7 +3,6 @@ package Model;
 import java.util.ArrayList;
 
 public class GenericStack<T> {
-    private int maxSize;
     private int top;
     private ArrayList<T> stackArray;
 

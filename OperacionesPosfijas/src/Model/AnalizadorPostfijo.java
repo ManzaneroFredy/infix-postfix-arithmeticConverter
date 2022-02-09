@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class AnalizadorPostfijo {
     private GenericStack<Character> salida = new GenericStack<>();
     private GenericStack<Character> operadores = new GenericStack<>();
-    private GenericStack<Character> evalua = new GenericStack<Character>();
     private Archivo archivoSalida = new Archivo();
 
     private ArrayList<String> listaExpresionesSalida = new ArrayList<>();

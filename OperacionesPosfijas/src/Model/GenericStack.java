@@ -61,12 +61,32 @@ public class GenericStack<T> {
 
     public T remove(int index) throws Exception {
         if (isEmpty()) {
-            throw new Exception("No hay elementos en el stack");
+            throw new Exception("No hay elementos en el stack (remove)");
         } else if (index > stackArray.size()) {
             throw new Exception("No existe algún elemento en ese indice");
         }
         return stackArray.remove(index);
     }
+
+    public void pushSpecificIndex(int index, T element){
+        stackArray.add(index, element);
+    }
+
+    public void cloneStack(GenericStack<T> stack){
+        for(int i = 0; i < stack.size(); i++){
+            this.stackArray.add((T)stack.peekSpecificElement(i));
+            top++;
+        }
+    }
+
+    public void convertStackToString(GenericStack<String> stackOfStrings){
+        for(int i = 0; i < stackArray.size(); i++){
+            stackOfStrings.push(this.stackArray.get(i).toString());
+        }
+        
+    }
+
+    
 
     public boolean isEmpty() {
         return (top == 0);

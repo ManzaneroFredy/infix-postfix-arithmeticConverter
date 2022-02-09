@@ -11,14 +11,8 @@ public class InfijoAPostfijoApp {
         ArrayList<String> listaExpresiones = new ArrayList<>();
         AnalizadorPostfijo analizador = new AnalizadorPostfijo();
 
-
+        archivo.obtenerRutaArchivo();
         archivo.obtenerExpresiones(listaExpresiones);
-
-        // System.out.println("=======EXPRESIONES CARGADAS=======");
-        // for(String linea : listaExpresiones){
-        //     System.out.println(linea);
-        // }
-        // System.out.println("");
         analizador.convertirExpresion(listaExpresiones);
 
 

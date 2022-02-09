@@ -6,15 +6,24 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Archivo {
-    private static final String RUTA_ARCHIVO = "OperacionesPosfijas/src/Docs/exp_infijas.txt";
+    private  String rutaArchivo;
     private BufferedReader lectorDocumento = null;
+
+    public void obtenerRutaArchivo(){
+        System.out.println("Porfavor, Ingrese la dirección absoluta del archivo");
+        System.out.println("Ejemplo: E:/Archivos/Semestre 4/Estructura de datos/Unidad/ADA3/OperacionesPosfijas/src/Docs/exp_postfijas.txt");
+        Scanner entrada = new Scanner(System.in);
+        this.rutaArchivo = entrada.nextLine();
+        entrada.close();
+    }
 
     public void obtenerExpresiones(ArrayList<String> listaExpresiones) throws IOException {
         try {
 
-            lectorDocumento = new BufferedReader(new FileReader(RUTA_ARCHIVO));
+            lectorDocumento = new BufferedReader(new FileReader(this.rutaArchivo));
             String linea = lectorDocumento.readLine();
             while (linea != null) {
                 String[] values = linea.split(";");
@@ -35,15 +44,15 @@ public class Archivo {
         }
     }
 
-    public void generarArchivoSalida(ArrayList<String> listaExpresiones) throws IOException {
-        String direccionSalida = "OperacionesPosfijas/src/Docs/exp_postfijas.txt";
+    public void generarArchivoSalida(ArrayList<String> listaExpresiones, ArrayList<Integer> listaResultados) throws IOException {
+        String direccionSalida = "src/Docs/exp_postfijas.txt";
         FileOutputStream archivoTxt = new FileOutputStream(direccionSalida);
         OutputStreamWriter salida = new OutputStreamWriter(archivoTxt, "UTF-8");
 
-        for(String expresion : listaExpresiones){
-            salida.write("Expr:"+expresion+ "; Eval:"+"\n");
-        } 
 
+        for(int i = 0; i < listaExpresiones.size(); i++){
+            salida.write("Expr: " + listaExpresiones.get(i) + "; Eval: " + listaResultados.get(i) + "\n");
+        }
 
         salida.close();
     }
